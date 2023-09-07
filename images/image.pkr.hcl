@@ -6,13 +6,27 @@ variable "region" {
   default = "us-east-1"
 }
 
+variable "profile" {
+  type    = string
+  default = "default"
+}
+
 locals { timestamp = regex_replace(timestamp(), "[- TZ:]", "") }
 
+packer {
+  required_plugins {
+    amazon = {
+      source  = "github.com/hashicorp/amazon"
+      version = "~> 1"
+    }
+  }
+}
 
 # source blocks are generated from your builders; a source can be referenced in
 # build blocks. A build block runs provisioners and post-processors on a
 # source.
 source "amazon-ebs" "example" {
+  profile       = var.profile
   ami_name      = "learn-terraform-packer-${local.timestamp}"
   instance_type = "t2.micro"
   region        = var.region

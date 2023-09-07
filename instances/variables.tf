@@ -19,3 +19,6 @@ variable "region"{
   description = "The region Terraform deploys your instance"
 }
 
+variable "profile" {
+  description = "User profile"
+}

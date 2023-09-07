@@ -11,6 +11,7 @@ sudo apt-get update
 sudo apt-get -y -qq install curl wget git vim apt-transport-https ca-certificates
 sudo add-apt-repository ppa:longsleep/golang-backports -y
 sudo apt-get -y -qq install golang-go
+sudo apt-get clean
 
 # Setup sudo to allow no-password sudo for "hashicorp" group and adding "terraform" user
 sudo groupadd -r hashicorp
